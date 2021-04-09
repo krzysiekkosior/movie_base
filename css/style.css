@@ -14,3 +14,20 @@ body {
 .navbar p {
     margin: 0px 10px
 }
+
+.search {
+    margin: 10px;
+}
+
+.search label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.search input[type=text] {
+    display: block;
+    width: 30%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }

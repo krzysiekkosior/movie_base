@@ -17,9 +17,12 @@ const Search = ({loading, error, movies, fetchMovies}) => {
     return (
         <>
         {movies.length === 0 && <h3>Rozpocznij wyszukiwanie filmów!</h3>}
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Nazwa filmu" 
-            value={name} onChange={e => setName(e.target.value)}/>
+        <form onSubmit={handleSubmit} className="search">
+            <label>
+                Nazwa filmu
+                <input type="text" 
+                value={name} onChange={e => setName(e.target.value)}/>
+            </label>
             <input type="submit" value="Szukaj"/>
         </form>
         {formError && formError}
