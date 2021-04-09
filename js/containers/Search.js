@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Search from "../components/Search";
+import { fetchMovies } from "../redux/actions/movies";
 
 const mapState = (state) => {
     const {loading, error, movies} = state.movies
@@ -10,4 +11,10 @@ const mapState = (state) => {
     })
 }
 
-export default connect(mapState)(Search)
+const mapDispatch = (dispatch) => {
+    return ({
+        fetchMovies: (movieName) => dispatch(fetchMovies(movieName)) 
+    })
+}
+
+export default connect(mapState, mapDispatch)(Search)
