@@ -1,4 +1,4 @@
-import { START_SEARCHING } from "../actions/movies";
+import { START_SEARCHING, MOVIES_NOT_FOUND, MOVIES_FOUND } from "../actions/movies";
 
 const initState = {
     loading: false,
@@ -12,6 +12,20 @@ const movies = (state = initState, action) => {
             return {
                 ...state,
                 loading: true
+            }
+
+        case MOVIES_NOT_FOUND:
+            return {
+                loading: false,
+                error: action.error,
+                movies: []
+            }
+
+        case MOVIES_FOUND:
+            return {
+                loading: false,
+                error: "",
+                movies: action.movies
             }
     
         default:

@@ -1,6 +1,8 @@
+import API_URL from "../../api/constants";
+
 const START_SEARCHING = "START_SEARCHING"
-const SEARCH_MOVIES_ERROR = "SEARCH_MOVIES_ERROR"
-const SEARCH_MOVIES_OK = "SEARSEARCH_MOVIES_OKCHED_MOVIES"
+const MOVIES_NOT_FOUND = "MOVIES_NOT_FOUND"
+const MOVIES_FOUND = "MOVIES_FOUND"
 
 const startSearching =  () => {
     return {
@@ -8,16 +10,16 @@ const startSearching =  () => {
     }
 }
 
-const searchMoviesError = (error) => {
+const moviesNotFound = () => {
     return {
-        type: SEARCH_ERROR,
-        error
+        type: MOVIES_NOT_FOUND,
+        error: "Nie znaleziono filmów spełniających kryteria wyszukiwania."
     }
 }
 
-const searchMoviesOk = (movies) => {
+const moviesFound = (movies) => {
     return {
-        type: SEARCH_ERROR,
+        type: MOVIES_FOUND,
         movies
     }
 }
@@ -25,9 +27,23 @@ const searchMoviesOk = (movies) => {
 const fetchMovies = (movieName) => (dispatch) => {
     dispatch(startSearching())
 
-    console.log("przeszło", movieName);
+    fetch(`${API_URL}&s=${movieName}`)
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(res => {
+            console.log(res);
+            if (res.Response === "True") {
+                dispatch(moviesFound(res.Search))
+            } else {
+                dispatch(moviesNotFound())
+            }
+        })
+        .catch(error => console.log(error))
 }
 
 export {
-    START_SEARCHING, SEARCH_MOVIES_ERROR, SEARCH_MOVIES_OK, fetchMovies
+    START_SEARCHING, MOVIES_NOT_FOUND, MOVIES_FOUND, fetchMovies
 }
