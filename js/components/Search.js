@@ -15,9 +15,9 @@ const Search = ({loading, error, movies, fetchMovies}) => {
     }
     
     return (
-        <>
+        <div className="search">
         {movies.length === 0 && <h3>Rozpocznij wyszukiwanie filmów!</h3>}
-        <form onSubmit={handleSubmit} className="search">
+        <form onSubmit={handleSubmit}>
             <label>
                 Nazwa filmu
                 <input type="text" 
@@ -26,8 +26,20 @@ const Search = ({loading, error, movies, fetchMovies}) => {
             <input type="submit" value="Szukaj"/>
         </form>
         {formError && formError}
-        {loading && "Wyszukiwanie filmów..."}      
-        </>
+        <hr/>
+        {loading && "Wyszukiwanie filmów..."}    
+        {error && error}
+        <div className="movies-container">
+        {movies && movies.map((movie) => {
+            return (
+                <div key={movie.imdbID} className="movie">
+                    <h5>{movie.Title} ({movie.Year})</h5>
+                    <img className="poster" src={movie.Poster} alt={movie.Title}/>
+                </div>
+            )
+        })}
+        </div>  
+        </div>
     )
 }
 
