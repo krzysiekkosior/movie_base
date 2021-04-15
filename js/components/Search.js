@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Movie from "./Movie";
+import Spinner from "./Spinner";
 
 const Search = ({ loading, error, movies, fetchMovies }) => {
     const [name, setName] = useState("");
@@ -28,7 +29,7 @@ const Search = ({ loading, error, movies, fetchMovies }) => {
         </form>
         {formError && formError}
         <hr/>
-        {loading && "Wyszukiwanie filmów..."}    
+        {loading && <Spinner />}    
         {error && error}
         <div className="movies-container">
         {movies && movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)}
