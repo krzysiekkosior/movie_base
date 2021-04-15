@@ -1,8 +1,9 @@
 import API_URL from "../../api/constants";
 
-const START_SEARCHING = "START_SEARCHING"
-const MOVIES_NOT_FOUND = "MOVIES_NOT_FOUND"
-const MOVIES_FOUND = "MOVIES_FOUND"
+const START_SEARCHING = "START_SEARCHING";
+const MOVIES_NOT_FOUND = "MOVIES_NOT_FOUND";
+const MOVIES_FOUND = "MOVIES_FOUND";
+const ADD_RATING = "ADD_RATING";
 
 const startSearching =  () => {
     return {
@@ -34,7 +35,6 @@ const fetchMovies = (movieName) => (dispatch) => {
             }
         })
         .then(res => {
-            console.log(res);
             if (res.Response === "True") {
                 dispatch(moviesFound(res.Search))
             } else {
@@ -44,6 +44,13 @@ const fetchMovies = (movieName) => (dispatch) => {
         .catch(error => console.log(error))
 }
 
+const addRating = (payload) => {
+    return ({
+        type: ADD_RATING,
+        payload
+    })
+}
+
 export {
-    START_SEARCHING, MOVIES_NOT_FOUND, MOVIES_FOUND, fetchMovies
+    START_SEARCHING, MOVIES_NOT_FOUND, MOVIES_FOUND, fetchMovies, addRating, ADD_RATING
 }

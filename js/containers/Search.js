@@ -7,13 +7,13 @@ const mapState = (state) => {
     return ({
         loading,
         error,
-        movies
+        movies,
     })
 }
 
 const mapDispatch = (dispatch) => {
     return ({
-        fetchMovies: (movieName) => dispatch(fetchMovies(movieName)) 
+        fetchMovies: (movieName) => dispatch(fetchMovies(movieName)),       
     })
 }
 

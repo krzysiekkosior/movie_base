@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Stars from "./Stars";
+import Movie from "./Movie";
 
-const Search = ({loading, error, movies, fetchMovies}) => {
+const Search = ({ loading, error, movies, fetchMovies }) => {
     const [name, setName] = useState("");
     const [formError, setFormError] = useState("");
 
@@ -31,15 +31,7 @@ const Search = ({loading, error, movies, fetchMovies}) => {
         {loading && "Wyszukiwanie filmów..."}    
         {error && error}
         <div className="movies-container">
-        {movies && movies.map((movie) => {
-            return (
-                <div key={movie.imdbID} className="movie">
-                    <h5>{movie.Title} ({movie.Year})</h5>
-                    <img className="poster" src={movie.Poster} alt={movie.Title}/>
-                    <Stars movie={movie} />
-                </div>
-            )
-        })}
+        {movies && movies.map((movie) => <Movie movie={movie} key={movie.imdbID} />)}
         </div>  
         </div>
     )

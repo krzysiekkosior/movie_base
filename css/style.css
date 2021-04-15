@@ -35,7 +35,6 @@ body {
 .poster {
     width: 135px;
     height: 181px;
-    /* border: 1px solid  rgb(200, 198, 188); */
     box-shadow: 4px 4px 15px black;
 }
 
