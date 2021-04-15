@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Stars from "./Stars";
 
 const Search = ({loading, error, movies, fetchMovies}) => {
     const [name, setName] = useState("");
@@ -35,6 +36,7 @@ const Search = ({loading, error, movies, fetchMovies}) => {
                 <div key={movie.imdbID} className="movie">
                     <h5>{movie.Title} ({movie.Year})</h5>
                     <img className="poster" src={movie.Poster} alt={movie.Title}/>
+                    <Stars movie={movie} />
                 </div>
             )
         })}
