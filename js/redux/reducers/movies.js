@@ -41,7 +41,7 @@ const movies = (state = initState, action) => {
             }
             return {
                 ...state,
-                ratings: [allRatings, action.payload]
+                ratings: [...allRatings, action.payload]
             }
     
         default:
