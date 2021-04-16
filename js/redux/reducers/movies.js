@@ -34,10 +34,14 @@ const movies = (state = initState, action) => {
             }
 
         case ADD_RATING:
-            let allRatings = state.ratings;
-            let isMovieRated = !!allRatings.filter(rating => rating.imdbID === action.payload.imdbID);
-            if (isMovieRated) {
-                allRatings = allRatings.filter(rating => rating.imdbID !== action.payload.imdbID)
+            let allRatings = [...state.ratings];
+            let ratedMovieIndex = allRatings.findIndex(rating => rating.movie.imdbID === action.payload.movie.imdbID)
+            if (ratedMovieIndex !== -1) {
+                allRatings[ratedMovieIndex].rating = action.payload.rating
+                return {
+                    ...state,
+                    ratings: [...allRatings]
+                }
             }
             return {
                 ...state,
@@ -48,5 +52,14 @@ const movies = (state = initState, action) => {
             return state;;
     }
 }
+
+function changeRating( value, desc ) {
+    for (var i in projects) {
+      if (projects[i].value == value) {
+         projects[i].desc = desc;
+         break; //Stop this loop, we found it!
+      }
+    }
+ }
 
 export default movies;
