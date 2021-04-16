@@ -7,7 +7,7 @@ const Movie = ({movie}) => {
         <div className="movie">
             <h5>{movie.Title} ({movie.Year}) ID: {movie.imdbID}</h5>
             <img className="poster" src={movie.Poster} alt={movie.Title}/>
-            <Stars movieId={movie.imdbID}/>
+            <Stars movie={movie}/>
         </div>
     )
 }
