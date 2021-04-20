@@ -6,6 +6,7 @@ import Search from "../containers/Search";
 import WatchedMovies from "../containers/WatchedMovies";
 import Navigation from "../components/Navigation";
 import NotFound from "../components/NotFound";
+import MovieDetails from "../containers/MovieDetails";
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
                 <Switch>
                     <Route exact path="/" component={Search}/>
                     <Route exact path="/watched" component={WatchedMovies}/>
+                    <Route exact path="/details/:imdb" component={MovieDetails}/>
                     <Route component={NotFound} />
                 </Switch>
             </Provider>
