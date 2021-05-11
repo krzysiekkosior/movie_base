@@ -7,6 +7,7 @@ import WatchedMovies from "../containers/WatchedMovies";
 import Navigation from "../components/Navigation";
 import NotFound from "../components/NotFound";
 import MovieDetails from "../containers/MovieDetails";
+import ToWatchMovies from "../containers/ToWatchMovies";
 
 const Main = () => {
     return (
@@ -16,6 +17,7 @@ const Main = () => {
                 <Switch>
                     <Route exact path="/" component={Search}/>
                     <Route exact path="/watched" component={WatchedMovies}/>
+                    <Route exact path="/to-watch" component={ToWatchMovies}/>
                     <Route exact path="/details/:imdb" component={MovieDetails}/>
                     <Route component={NotFound} />
                 </Switch>
