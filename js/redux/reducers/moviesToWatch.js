@@ -11,11 +11,6 @@ const moviesToWatch = (state = [], action) => {
                 return filteredMovies;
             }
             return [...state, action.payload];
-
-        // case REMOVE_MOVIE_TO_WATCH:
-        //     let allMoviesToWatch = [...state];
-        //     filteredMoviesToWatch = allMoviesToWatch.filter((id) => id !== action.payload);
-        //     return filteredMoviesToWatch;
     
         default:
             return state;
