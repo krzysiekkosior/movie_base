@@ -7,4 +7,4 @@ const toggleMovieToWatch = (payload) => {
     })
 }
 
-export { TOGGLE_MOVIE_TO_WATCH, toggleMovieToWatch };
+export { TOGGLE_MOVIE_TO_WATCH, toggleMovieToWatch};
