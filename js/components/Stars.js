@@ -21,6 +21,7 @@ const Stars = ({ movie, ratings, addToWatched}) => {
 
     return (
         <div className="star-rating">
+            
             <input type="radio" id={`5-stars-${movie.imdbID}`} name={movie.imdbID} value="5" 
             checked={rating === "5"} onChange={changeRating}/>
             <label htmlFor={`5-stars-${movie.imdbID}`} className="star">&#9733;</label>
