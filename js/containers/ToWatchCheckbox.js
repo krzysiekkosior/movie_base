@@ -10,7 +10,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return ({
-        changeToWatchValue: () => dispatch(toggleMovieToWatch())
+        toggleToWatchMovie: (movie) => dispatch(toggleMovieToWatch(movie)),
     })
 }
 
